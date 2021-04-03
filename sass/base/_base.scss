@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+  box-sizing: border-box;
+  padding-top: 90px;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+  @include transition_c(all 0.3s ease-out);
+  &:link,
+  &:visited {
+    color: $black;
+  }
+  &:active,
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  @include transition_c(all .3s ease-out);
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}

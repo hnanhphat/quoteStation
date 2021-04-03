@@ -1,0 +1,69 @@
+.sidebar {
+  background: $grey-dark-1;
+  flex: 0 0 18%;
+  min-width: 220px;
+  height: calc(100vh - 90px);
+  padding-top: 35px;
+  &__item {
+    .tit {
+      color: $white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        background: $primary-dark-1;
+        width: 3px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        @include tranform_c(scaleY(0));
+        transition: transform 0.2s,width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,background-color 0.1s,-webkit-transform 0.2s;
+      }
+      .icon {
+        width: 20px;
+        font-size: 0;
+        text-align: center;
+        position: relative;
+        .fa-th-large {
+          width: 20px;
+        }
+        .fa-lightbulb {
+          width: 18px;
+        }
+      }
+      span {
+        font-family: $open;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding-left: 10px;
+        position: relative;
+      }
+      &.active,
+      &:hover {
+        &::before {
+          width: 100%;
+          @include tranform_c(scaleY(1));
+        }
+      }
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px 10px;
+      li {
+        padding: 0 5px 10px;
+        button {
+          background: $primary-dark-1;
+          border: none;
+          border-radius: 100px;
+          color: $white;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
