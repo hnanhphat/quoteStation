@@ -9,16 +9,17 @@
   overflow: auto;
   &__item {
     .tit {
+      background: $primary-dark-1;
       color: $white;
-      cursor: pointer;
       display: flex;
       align-items: center;
       padding: 10px 20px;
       position: relative;
+      @include transition_c(all .5s ease-out);
       &::before {
         content: '';
         position: absolute;
-        background: $primary-dark-1;
+        background: $white;
         width: 3px;
         height: 100%;
         top: 0;
@@ -47,6 +48,7 @@
       }
       &.active,
       &:hover {
+        color: $black;
         &::before {
           width: 100%;
           @include tranform_c(scaleY(1));
@@ -56,7 +58,10 @@
     ul {
       display: flex;
       flex-wrap: wrap;
-      padding: 20px 10px;
+      height: 260px;
+      padding: 0 10px;
+      margin: 20px 0;
+      overflow: auto;
       li {
         padding: 0 5px 10px;
         button {
@@ -67,10 +72,15 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 40px;
+          width: 100%;
+          height: 100%;
+          min-height: 40px;
           padding: 0 10px;
           &.count {
-            padding: 0 4px 0 10px;
+            padding: 6px 4px 6px 10px;
+          }
+          p {
+            flex: 1;
           }
           span {
             background: #000;

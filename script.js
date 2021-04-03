@@ -10,15 +10,6 @@ const urlOptions = {
   limit: 20,
 };
 
-let optionInit = {
-  method: 'GET',
-  headers: {
-    'message': "Random quotes"
-  },
-  mode: 'cors',
-  cache: 'default'
-}
-
 const getURL = (urlOptions) => {
   let url = Object.keys(urlOptions).reduce((url, option) => {
     if (urlOptions[option]) {
@@ -29,17 +20,21 @@ const getURL = (urlOptions) => {
   return url;
 };
 
-const getArticles = async (addToList = false) => {
+const getQuotes = async (addToList = false) => {
+  if (!addToList) {
+    urlOptions.page = 1;
+    quoteList = [];
+  }
+
   let url = getURL(urlOptions);
-  const response = await fetch(url, optionInit);
+  const response = await fetch(url);
   const data = await response.json();
-  quoteList = data.data;
-  renderArticles(quoteList);
+  quoteList = [...quoteList, ...data.data];
+  renderQuotes(quoteList);
   renderAuthor(quoteList);
-  console.log(quoteList);
 };
 
-const renderArticles = (quoteList) => {
+const renderQuotes = (quoteList) => {
   const quoteListHTML = quoteList
     .map((quote) => {
       return `
@@ -66,8 +61,7 @@ const renderArticles = (quoteList) => {
         </div>
       `;
     })
-    .join("");
-
+    .join('');
   document.getElementById("detail").innerHTML = quoteListHTML;
 };
 
@@ -89,20 +83,43 @@ const renderAuthor = (quoteList) => {
   const authorListHTML = Object.keys(authorCounter)
     .map(
       (author) =>
-        `<li><button class="count" onclick="handleAuthorClicked('${author}')">${author}<span>${authorCounter[author]}</span></button></li>`
+      `<li><button class="count" onclick="handleAuthorClicked('${author}')"><p>${author}</p><span>${authorCounter[author]}</span></button></li>`
     )
     .join("");
 
   document.getElementById("authors").innerHTML = authorListHTML;
 };
 
+const renderGenres = async () => {
+  let url = 'https://quote-garden.herokuapp.com/api/v3/genres';
+  const response = await fetch(url);
+  const data = await response.json();
+  const genres = data.data;
+  const genresHTML = genres.map((genre) => {
+    return `<li><button>${genre[0].toUpperCase() + genre.slice(1)}</button></li>`;
+  }).join('');
+  document.getElementById('categories').innerHTML = genresHTML;
+}
+
+const handleSearchClick = () => {
+  let query = document.getElementById("search");
+  urlOptions.query = query.value;
+  getQuotes();
+};
+
 const handleAuthorClicked = (authorInput) => {
   if (authorInput == '') {
-    renderArticles(quoteList);
+    renderQuotes(quoteList);
   } else {
     let filterList = quoteList.filter((quote) => quote.quoteAuthor == authorInput);
-    renderArticles(filterList);
+    renderQuotes(filterList);
   }
 };
 
-getArticles();
+const handleLoadMoreClick = () => {
+  urlOptions.page++;
+  getQuotes(true);
+};
+
+renderGenres();
+getQuotes();

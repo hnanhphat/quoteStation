@@ -38,6 +38,19 @@
         outline: none;
       }
     }
+    button {
+      background: $primary;
+      border: none;
+      border-radius: 100px;
+      color: $white;
+      cursor: pointer;
+      width: 80px;
+      height: 39px;
+      @include transition_c(all .3s ease-out);
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
   &__user {
     background: $white;
