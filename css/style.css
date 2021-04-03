@@ -134,7 +134,8 @@ button {
   padding-top: 35px;
   position: fixed;
   top: 90px;
-  left: 0; }
+  left: 0;
+  overflow: auto; }
   .sidebar__item .tit {
     color: #fff;
     cursor: pointer;
@@ -189,7 +190,23 @@ button {
         border: 2px solid #e26e7d;
         border-radius: 100px;
         color: #fff;
-        padding: 10px; }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 10px; }
+        .sidebar__item ul li button.count {
+          padding: 0 4px 0 10px; }
+        .sidebar__item ul li button span {
+          background: #000;
+          border-radius: 50%;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+          margin-left: 8px; }
         .sidebar__item ul li button:hover {
           background: #fff;
           color: #e26e7d; }
@@ -227,6 +244,8 @@ button {
         padding: 20px 25px;
         overflow: hidden;
         position: relative; }
+        #home .main-content main .detail__item:not(:last-child) {
+          margin-bottom: 25px; }
         #home .main-content main .detail__item::before {
           content: "\201C";
           position: absolute;

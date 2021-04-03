@@ -6,6 +6,7 @@
   position: fixed;
   top: 90px;
   left: 0;
+  overflow: auto;
   &__item {
     .tit {
       color: $white;
@@ -63,7 +64,25 @@
           border: 2px solid $primary-dark-1;
           border-radius: 100px;
           color: $white;
-          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+          padding: 0 10px;
+          &.count {
+            padding: 0 4px 0 10px;
+          }
+          span {
+            background: #000;
+            border-radius: 50%;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin-left: 8px;
+          }
           &:hover {
             background: $white;
             color: $primary-dark-1;
