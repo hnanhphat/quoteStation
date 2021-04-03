@@ -1,17 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans:wght@300;400&display=swap");
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: border-box; }
 
 html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box;
-  padding-top: 90px; }
+  padding-top: 90px;
+  letter-spacing: 0; }
 
 a {
   color: #000;
@@ -38,8 +38,6 @@ button {
   transition: all 0.3s ease-out; }
   button:focus {
     outline: none; }
-  button:hover {
-    opacity: 0.5; }
 
 .header {
   background: #fff;
@@ -92,7 +90,6 @@ button {
       font-size: 18px;
       padding-right: 15px; }
     .header__user .avatar {
-      background-color: #777;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -129,10 +126,12 @@ button {
 
 .sidebar {
   background: #333;
-  flex: 0 0 18%;
-  min-width: 220px;
+  width: 262px;
   height: calc(100vh - 90px);
-  padding-top: 35px; }
+  padding-top: 35px;
+  position: fixed;
+  top: 90px;
+  left: 0; }
   .sidebar__item .tit {
     color: #fff;
     cursor: pointer;
@@ -184,12 +183,37 @@ button {
       padding: 0 5px 10px; }
       .sidebar__item ul li button {
         background: #e26e7d;
-        border: none;
+        border: 2px solid #e26e7d;
         border-radius: 100px;
         color: #fff;
         padding: 10px; }
+        .sidebar__item ul li button:hover {
+          background: #fff;
+          color: #e26e7d; }
 
 #home .main-content {
   display: flex; }
   #home .main-content main {
-    flex: 1; }
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 262px);
+    margin-left: auto; }
+    #home .main-content main .gallery {
+      display: flex;
+      font-size: 0; }
+      #home .main-content main .gallery__item {
+        width: 33.3333%; }
+        #home .main-content main .gallery__item img {
+          width: 100%; }
+    #home .main-content main .overview__heading {
+      color: #777;
+      font-family: "Open Sans", sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 30px; }
+    #home .main-content main .detail {
+      background: #faf9f9;
+      border-top: 1px solid #f4f2f2;
+      flex: 1; }

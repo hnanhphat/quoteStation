@@ -1,9 +1,11 @@
 .sidebar {
   background: $grey-dark-1;
-  flex: 0 0 18%;
-  min-width: 220px;
+  width: 262px;
   height: calc(100vh - 90px);
   padding-top: 35px;
+  position: fixed;
+  top: 90px;
+  left: 0;
   &__item {
     .tit {
       color: $white;
@@ -58,10 +60,14 @@
         padding: 0 5px 10px;
         button {
           background: $primary-dark-1;
-          border: none;
+          border: 2px solid $primary-dark-1;
           border-radius: 100px;
           color: $white;
           padding: 10px;
+          &:hover {
+            background: $white;
+            color: $primary-dark-1;
+          }
         }
       }
     }

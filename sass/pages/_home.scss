@@ -2,7 +2,36 @@
   .main-content {
     display: flex;
     main {
-      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - 262px);
+      margin-left: auto;
+      .gallery {
+        display: flex;
+        font-size: 0;
+        &__item {
+          width: 33.3333%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .overview {
+        &__heading {
+          color: $grey-dark-2;
+          font-family: $open;
+          font-size: 22px;
+          font-weight: 300;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 15px 30px;
+        }
+      }
+      .detail {
+        background: $grey-light-1;
+        border-top: 1px solid $grey-light-2;
+        flex: 1;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -12,8 +12,8 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   padding-top: 90px;
+  letter-spacing: 0;
 }
 
 a {
@@ -39,8 +39,5 @@ button {
   @include transition_c(all .3s ease-out);
   &:focus {
     outline: none;
-  }
-  &:hover {
-    opacity: 0.5;
   }
 }
