@@ -35,6 +35,8 @@ ul {
 }
 
 button {
+  background: none;
+  border: none;
   cursor: pointer;
   @include transition_c(all .3s ease-out);
   &:focus {

@@ -1,15 +1,15 @@
 .header {
   background: $white;
-  border-bottom: 1px solid $grey-light-2;
+  border-bottom: $line;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 90px;
-  // padding: 0 30px;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   &__logo {
     display: block;
     max-width: 96px;
@@ -38,19 +38,6 @@
         outline: none;
       }
     }
-    // button {
-    //   background: $primary;
-    //   border: none;
-    //   border-radius: 100px;
-    //   color: $white;
-    //   cursor: pointer;
-    //   width: 80px;
-    //   height: 39px;
-    //   @include transition_c(all .3s ease-out);
-    //   &:hover {
-    //     opacity: 0.5;
-    //   }
-    // }
   }
   &__user {
     background: $white;
