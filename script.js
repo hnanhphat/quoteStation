@@ -30,7 +30,8 @@ const getQuotes = async (addToList = false) => {
   const response = await fetch(url);
   const data = await response.json();
   quoteList = [...quoteList, ...data.data];
-  if(quoteList != '') {
+  if (quoteList != '') {
+    renderCarousel();
     renderQuotes(quoteList);
     renderAuthor(quoteList);
   } else {
@@ -46,7 +47,7 @@ const renderQuotes = (quoteList) => {
           <div class="upper">
             <div class="upper__quote">
               <blockquote>"${quote.quoteText}"</blockquote>
-              <a href="" class="author">${quote.quoteAuthor}</a>
+              <a href="https://en.wikipedia.org/wiki/${quote.quoteAuthor.replace(' ', '_')}" target="_blank" class="author">${quote.quoteAuthor}</a>
             </div>
             <div class="upper__favorite">
               <button><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg></button>
@@ -103,6 +104,37 @@ const renderGenres = async () => {
     return `<li><button onclick="handleClickSideMenu('${genre}')">${genre[0].toUpperCase() + genre.slice(1)}</button></li>`;
   }).join('');
   document.getElementById('categories').innerHTML = genresHTML;
+}
+
+const getCarousel = async (author) => {
+  let url = `https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=${author}&origin=*`;
+  const response = await fetch(url);
+  const data = await response.json();
+  const result = data.query.pages;
+  const id = Object.keys(result)[0];
+  let imgURL = '';
+  if (result[id].original) {
+    imgURL = result[id].original.source;
+  }
+  return imgURL;
+}
+
+const renderCarousel  = () => {
+  const authorCounter = countingAuthors(quoteList);
+  let imgArray = [];
+  Object.keys(authorCounter).forEach(element => {
+    // let test = getCarousel(element);
+    // test.then(function(result) {
+    //   // console.log(result);
+    // });
+    imgArray.push(getCarousel(element));
+  });
+  console.log(imgArray);
+  // document.getElementById('gallery').innerHTML = imgArray.map((item) => `
+  //   <div class="gallery__item">
+  //     <div class="img"><img src="${item}" alt="Background 01"></div>
+  //   </div>
+  // `).join('');
 }
 
 const handleClickSideMenu = (authorInput) => {
