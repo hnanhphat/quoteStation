@@ -383,12 +383,38 @@ button {
     width: calc(100% - 262px);
     margin-left: auto; }
     #home .main-content main .gallery {
-      display: flex; }
+      font-size: 0; }
       #home .main-content main .gallery__item {
-        width: 33.3333%; }
-        #home .main-content main .gallery__item img {
-          display: block;
-          width: 100%; }
+        display: inline-block;
+        width: 20%;
+        position: relative; }
+        #home .main-content main .gallery__item .img {
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          height: 180px;
+          position: relative; }
+          #home .main-content main .gallery__item .img::before {
+            content: '';
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0; }
+        #home .main-content main .gallery__item p {
+          position: absolute;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          z-index: 10; }
     #home .main-content main .overview__heading {
       color: #777;
       font-family: "Open Sans", sans-serif;

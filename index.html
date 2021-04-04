@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quote Station</title>
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./css/slick.css" />
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -39,13 +40,7 @@
             </svg></div>
           <span>Categories</span>
         </div>
-        <ul id="categories">
-          <div class="spinner">
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-            <div class="spinner-item"></div>
-          </div>
-        </ul>
+        <ul id="categories"></ul>
       </div>
       <div class="sidebar__item">
         <div class="tit">
@@ -69,14 +64,10 @@
     </nav>
     <main>
       <div id="gallery" class="gallery">
-        <div class="gallery__item">
-          <div class="img"><img src="./img/bg-1.jpg" alt="Background 01"></div>
-        </div>
-        <div class="gallery__item">
-          <div class="img"><img src="./img/bg-2.jpg" alt="Background 02"></div>
-        </div>
-        <div class="gallery__item">
-          <div class="img"><img src="./img/bg-3.jpg" alt="Background 03"></div>
+        <div class="spinner">
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
+          <div class="spinner-item"></div>
         </div>
       </div>
       <div class="overview">
@@ -98,7 +89,11 @@
     </main>
   </div>
   <footer></footer>
-  <script src="./script.js"></script>
+  <script src=""></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="./js/slick.min.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

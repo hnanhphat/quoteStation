@@ -34,6 +34,16 @@ const getQuotes = async (addToList = false) => {
     renderCarousel();
     renderQuotes(quoteList);
     renderAuthor(quoteList);
+    setTimeout(function(){
+      $('#gallery').slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1
+      });
+    }, 1000);
   } else {
     document.getElementById("detail").innerHTML = `<p class="detail__no-item"><span>0 results found</span><br>Please enter another search keyword!</p>`;
   }
@@ -123,18 +133,28 @@ const renderCarousel  = () => {
   const authorCounter = countingAuthors(quoteList);
   let imgArray = [];
   Object.keys(authorCounter).forEach(element => {
-    // let test = getCarousel(element);
-    // test.then(function(result) {
-    //   // console.log(result);
-    // });
-    imgArray.push(getCarousel(element));
+    let test = getCarousel(element);
+    test.then(function(result) {
+      var node = document.createElement("button");
+      node.onclick = function() { handleAuthorCarousel(element); };
+      node.className = 'gallery__item';
+      var nodeChildImg = document.createElement("div");
+      nodeChildImg.className = 'img';
+      nodeChildImg.style.backgroundImage = (result != '') ? `url(${result})` : 'url(../img/no-photo.jpeg)';
+      var nodeChildTxt = document.createElement("p");
+      var nodeChildTxtVal = document.createTextNode(element);
+      nodeChildTxt.appendChild(nodeChildTxtVal);
+      node.appendChild(nodeChildImg);
+      node.appendChild(nodeChildTxt);
+      document.getElementById('gallery').appendChild(node);
+
+    });
   });
-  console.log(imgArray);
-  // document.getElementById('gallery').innerHTML = imgArray.map((item) => `
-  //   <div class="gallery__item">
-  //     <div class="img"><img src="${item}" alt="Background 01"></div>
-  //   </div>
-  // `).join('');
+  document.getElementById('gallery').innerHTML = imgArray.map((item) => `
+    <div class="gallery__item">
+      <div class="img"><img src="${item}" alt="Background 01"></div>
+    </div>
+  `).join('');
 }
 
 const handleClickSideMenu = (authorInput) => {
@@ -159,6 +179,12 @@ const handleAuthorClicked = (authorInput) => {
   }
 };
 
+const handleAuthorCarousel = (authorInput) => {
+  document.getElementById("detail").innerHTML = `<div class="spinner"><div class="spinner-item"></div><div class="spinner-item"></div><div class="spinner-item"></div></div>`;
+  urlOptions.author = authorInput;
+  getQuotes();
+};
+
 const handleLoadMoreClick = () => {
   var node = document.createElement("div");
   node.className = 'spinner';
@@ -176,5 +202,6 @@ const handleLoadMoreClick = () => {
   getQuotes(true);
 };
 
+// getCarousel();
 renderGenres();
 getQuotes();
