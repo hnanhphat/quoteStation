@@ -44,7 +44,7 @@ button {
 .spinner {
   width: 75px;
   height: 75px;
-  margin: 0 auto;
+  margin: 25px auto;
   position: relative;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -479,11 +479,11 @@ button {
               #home .main-content main .detail__item .lower .cate button span {
                 position: relative; }
               #home .main-content main .detail__item .lower .cate button:hover::before {
-                -webkit-transform: translate(-50%, -50%) scale(5);
-                -moz-transform: translate(-50%, -50%) scale(5);
-                -ms-transform: translate(-50%, -50%) scale(5);
-                -o-transform: translate(-50%, -50%) scale(5);
-                transform: translate(-50%, -50%) scale(5); }
+                -webkit-transform: translate(-50%, -50%) scale(10);
+                -moz-transform: translate(-50%, -50%) scale(10);
+                -ms-transform: translate(-50%, -50%) scale(10);
+                -o-transform: translate(-50%, -50%) scale(10);
+                transform: translate(-50%, -50%) scale(10); }
           #home .main-content main .detail__item .lower .social {
             display: flex; }
             #home .main-content main .detail__item .lower .social a {
@@ -526,6 +526,13 @@ button {
                   -ms-transform: translate(-50%, -50%) scale(1);
                   -o-transform: translate(-50%, -50%) scale(1);
                   transform: translate(-50%, -50%) scale(1); }
+      #home .main-content main .detail__no-item {
+        font-size: 16px;
+        text-align: center; }
+        #home .main-content main .detail__no-item span {
+          color: #e26e7d;
+          display: block;
+          font-size: 26px; }
     #home .main-content main .load-more {
       padding: 30px; }
       #home .main-content main .load-more button {

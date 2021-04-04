@@ -114,7 +114,7 @@
                 &:hover {
                   // opacity: 1;
                   &::before {
-                    @include tranform_c(translate(-50%, -50%) scale(5));
+                    @include tranform_c(translate(-50%, -50%) scale(10));
                   }
                 }
               }
@@ -155,6 +155,15 @@
                 }
               }
             }
+          }
+        }
+        &__no-item {
+          font-size: 16px;
+          text-align: center;
+          span {
+            color: $primary-dark-1;
+            display: block;
+            font-size: 26px;
           }
         }
       }
