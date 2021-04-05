@@ -392,7 +392,7 @@ button {
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          height: 180px;
+          height: 300px;
           position: relative; }
           #home .main-content main .gallery__item .img::before {
             content: '';
