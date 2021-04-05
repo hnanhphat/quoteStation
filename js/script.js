@@ -37,7 +37,7 @@ const getQuotes = async (addToList = false) => {
     setTimeout(function(){
       $('#gallery').slick({
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 1000,
         arrows: false,
         infinite: true,
         slidesToShow: 5,
@@ -160,6 +160,7 @@ const renderCarousel  = () => {
 const handleClickSideMenu = (authorInput) => {
   document.getElementById("detail").innerHTML = `<div class="spinner"><div class="spinner-item"></div><div class="spinner-item"></div><div class="spinner-item"></div></div>`;
   urlOptions.genre = authorInput;
+  $('#gallery').removeClass('slick-slider').removeClass('slick-initialized');
   getQuotes();
 };
 
@@ -167,6 +168,7 @@ const handleSearchClick = () => {
   document.getElementById("detail").innerHTML = `<div class="spinner"><div class="spinner-item"></div><div class="spinner-item"></div><div class="spinner-item"></div></div>`;
   let query = document.getElementById("search");
   urlOptions.query = query.value;
+  $('#gallery').removeClass('slick-slider').removeClass('slick-initialized');
   getQuotes();
 };
 
